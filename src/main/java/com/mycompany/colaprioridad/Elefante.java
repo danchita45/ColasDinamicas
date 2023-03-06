@@ -10,7 +10,7 @@ package com.mycompany.colaprioridad;
  */
 public class Elefante {
     String etiqueta;
-
+    
     public String getEtiqueta() {
         return etiqueta;
     }

@@ -13,67 +13,59 @@ import EDD.Machote;
  */
 public class PilasD<T> implements Machote {
 
-    private Nodo<T> Tope = null;
-    private int tam=0;
-
-    public Nodo<T> getTope() {
-        return Tope;
-    }
-
-    public void setTope(Nodo<T> Tope) {
-        this.Tope = Tope;
-    }
-
-    public int getTam() {
-        return tam;
-    }
-
-    public void setTam(int tam) {
-        this.tam = tam;
-    }
-
+    int Tope =-1;
+    Elefante[] cd =null;
+    public static Elefante elef = new Elefante();
     
-
     @Override
     public boolean vacio() {
-        return Tope == null;
+        return (Tope==-1);
     }
 
     @Override
     public boolean llena() {
-
-        return false;
-
+       return false;     
     }
 
     @Override
     public boolean inserta(Object obj) {
-        Nodo Dato = (Nodo) obj;
-        if (Dato == null) {
-            System.out.println("Pila llena o no se puede insertar el dato");
-            return false;
+        if (vacio()) {
+            cd = new Elefante[1];
+            cd[0] = (Elefante) obj;
+            Tope++;
+            return true;
         } else {
-            Dato.setSig(Tope);
-            Tope = Dato;
+            Tope++;
+            Elefante[] cde = new Elefante[Tope + 1];
+            cde[Tope] = (Elefante) obj;
+            int i = 0;
+            for (Elefante f : cd) {
+                cde[i] = f;
+                i++;
+            }
+            cd = new Elefante[cde.length];
+            System.arraycopy(cde, 0, cd, 0, cde.length);
             return true;
         }
     }
 
     @Override
     public Object elimina() {
-        if (!vacio()) {
-            System.out.println("no hay objetos a eliminar");
-            return null;
+         if (!vacio()) {
+            Elefante elefante = cd[Tope];
+            Elefante[] olifante = new Elefante[cd.length - 1];
+            System.arraycopy(cd, 0, olifante, 0, cd.length - 1);
+            cd = new Elefante[olifante.length];
+            System.arraycopy(olifante, 0, cd, 0, olifante.length);
+            Tope--;
+            return elefante;
         } else {
-            Nodo d = Tope;
-            Tope = Tope.sig;
-            d.sig = null;
-            return d;
+            Elefante fante= new Elefante();
+            System.out.println("Cola vacia!!!...");
+            return fante;
         }
-
     }
 
+    
+
 }
-//en una insercion primero se conecta el que llega y luego se mueven los que estaban(apuntadores)
-//para eliminar, primero ubicamos dato a eliminar con apuntador, se mueven los que se quedan 
-//al final se desconecta el que se va

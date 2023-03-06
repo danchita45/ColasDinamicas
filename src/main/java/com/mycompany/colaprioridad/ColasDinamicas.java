@@ -67,4 +67,6 @@ public class ColasDinamicas<T> implements Machote {
             return fante;
         }
     }
+    
+    
 }
