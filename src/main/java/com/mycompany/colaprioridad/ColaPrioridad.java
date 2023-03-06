@@ -99,7 +99,11 @@ public class ColaPrioridad {
                 menuPD();
                 break;
             case "3":
-                System.out.println(Pila.cd[Pila.Tope].etiqueta);
+                if(Pila.cd[Pila.Tope]!=null){
+                    System.out.println(Pila.cd[Pila.Tope].etiqueta);
+                }else{
+                    System.out.println("Pila Vacia");
+                }
                 menuPD();
                 break;  
             case "4":
