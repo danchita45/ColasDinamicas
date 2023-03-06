@@ -14,7 +14,6 @@ public class ColasDinamicas<T> implements Machote {
 
     int f = -1;
     int a = -1;
-    int n;
     Elefante[] cd = null;
 
     @Override
